@@ -1,11 +1,13 @@
 {
   "name": "firstapi",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "lint": "eslint --fix test/**",
-    "test": "jest"
+    "start": "nodemon src/server.js",
+    "lint": "eslint --fix src/** test/**",
+    "test": "jest --verbose=true",
+    "testing": "jest --watch --verbose=true"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,8 @@
     "eslint": "^8.18.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   }
 }
