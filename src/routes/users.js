@@ -17,10 +17,22 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:userId', (req, res) => {
-  console.log(req.params.userId);
-  console.log(users.getUsers());
-  console.log(users.getUser(req.params.userId));
   res.status(200).json(users.getUser(req.params.userId));
+});
+
+router.delete('/:userId', (req, res) => {
+  res.status(200).json(users.deleteUser(req.params.userId));
+});
+
+router.put('/:userId', (req, res) => {
+  const id = req.params.userId;
+  const oldPassword = req.body.oldPassword;
+  const newPassword = req.body.newPassword;
+  if (users.changePassword(id, oldPassword, newPassword)) {
+    res.status(200).json({ message: 'Senha alterada com sucesso.' });
+  } else {
+    res.status(400).json({ message: 'Erro: Senha não alterada.' });
+  }
 });
 
 module.exports = router;
