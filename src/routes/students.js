@@ -5,8 +5,10 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   const student = {
+    registration: req.body.registration,
+    name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    birth_date: req.body.birth_date,
   };
   students.addStudent(student);
   res.status(201).json(student);
@@ -26,13 +28,9 @@ router.delete('/:studentId', (req, res) => {
 
 router.put('/:studentId', (req, res) => {
   const id = req.params.studentId;
-  const { oldPassword } = req.body;
-  const { newPassword } = req.body;
-  if (students.changePassword(id, oldPassword, newPassword)) {
-    res.status(200).json({ message: 'Senha alterada com sucesso.' });
-  } else {
-    res.status(400).json({ message: 'Erro: Senha não alterada.' });
-  }
+  const student = req.body;
+  const newStudent = students.changeStudent(id, student);
+  res.status(200).json(newStudent);
 });
 
 module.exports = router;

@@ -1,7 +1,9 @@
 const students = require('../database/students');
 
+const sequenceId = Object.values(students).length + 1;
+
 const sequence = {
-  _id: 2,
+  _id: sequenceId,
   get id() { return this._id++; },
 };
 
@@ -28,6 +30,15 @@ function deleteStudent(id) {
   return student;
 }
 
+function changeStudent(id, student) {
+  const newStudent = students[id] || {};
+  newStudent.registration = student.registration;
+  newStudent.name = student.name;
+  newStudent.email = student.email;
+  newStudent.birth_date = student.birth_date;
+  return newStudent;
+}
+
 module.exports = {
-  addStudent, getStudent, getStudents, deleteStudent,
+  addStudent, getStudent, getStudents, deleteStudent, changeStudent,
 };
