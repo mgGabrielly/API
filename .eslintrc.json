@@ -12,12 +12,11 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "options":{
-        "no-underscore-dangle": "allowAfterThis"
-    },
     "rules": {
         "no-console": "off",
         "arrow-body-style": "off",
-        "no-plusplus": "off"  
+        "no-plusplus": "off",
+        "no-underscore-dangle": "off",
+        "no-prototype-builtins": "off" 
     }
 }

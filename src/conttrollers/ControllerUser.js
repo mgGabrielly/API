@@ -34,7 +34,7 @@ function changePassword(id, oldPassword, newPassword) {
   const user = users[id] || {};
   let retorno = false;
   if (users.hasOwnProperty(id)) {
-    if ( user.password == oldPassword ) {
+    if (user.password === oldPassword) {
       user.password = newPassword;
       retorno = true;
     }

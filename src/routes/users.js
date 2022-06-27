@@ -1,5 +1,5 @@
 const express = require('express');
-const users = require('../models/User');
+const users = require('../conttrollers/ControllerUser');
 
 const router = express.Router();
 
@@ -26,8 +26,8 @@ router.delete('/:userId', (req, res) => {
 
 router.put('/:userId', (req, res) => {
   const id = req.params.userId;
-  const oldPassword = req.body.oldPassword;
-  const newPassword = req.body.newPassword;
+  const { oldPassword } = req.body;
+  const { newPassword } = req.body;
   if (users.changePassword(id, oldPassword, newPassword)) {
     res.status(200).json({ message: 'Senha alterada com sucesso.' });
   } else {
