@@ -2,6 +2,7 @@
 const express = require('express');
 const users = require('./routes/users');
 const students = require('./routes/students');
+const instructors = require('./routes/instructors');
 
 // Criar aplicação WEB express
 const app = express();
@@ -11,11 +12,16 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // Arquivos de rotas
 app.use('/users', users);
 app.use('/students', students);
+app.use('/instructors', instructors);
 
 // Rotas (End Points)
 app.get('/', (req, res) => {
   // console.log('Rota / foi chamada.');
   res.send('Esta é a rota raiz da aplicação!');
+});
+app.post('/instructors', (req, res) => {
+  // console.log('Rota / foi chamada.');
+  res.status(201).send('Teste');
 });
 
 // Exportar a aplicação
