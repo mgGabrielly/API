@@ -22,10 +22,23 @@ function getInstructors() {
   return Object.values(instructors);
 }
 
-function deleteStudent(id) {
-    const student = students[id] || {};
-    if (students.hasOwnProperty(id)) {
-      delete students[id];
-    }
-    return student;
+function deleteInstructor(id) {
+  const instructor = instructors[id] || {};
+  if (instructors.hasOwnProperty(id)) {
+    delete instructors[id];
   }
+  return instructor;
+}
+
+function changeInstructor(id, instructor) {
+  const newInstructor = instructors[id] || {};
+  newInstructor.registration = instructor.registration;
+  newInstructor.name = instructor.name;
+  newInstructor.email = instructor.email;
+  newInstructor.birth_date = instructor.birth_date;
+  return newInstructor;
+}
+
+module.exports = {
+  addInstructor, getInstructor, getInstructors, deleteInstructor, changeInstructor,
+};
